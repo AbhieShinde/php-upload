@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['store_id']) && isset(
 
         if (move_uploaded_file($files['tmp_name'][$key], $targetFile)) {
             $uploadSuccess[] = [
-                'url' => $_SERVER['HTTP_HOST'] . str_replace($_SERVER['DOCUMENT_ROOT'], '', $targetFile),
+                'url' => 'https://' . $_SERVER['HTTP_HOST'] . str_replace($_SERVER['DOCUMENT_ROOT'], '', $targetFile),
                 'size' => $files['size'][$key],
                 'name' => $fileName,
                 'mime_type' => $files['type'][$key],
