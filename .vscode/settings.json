@@ -1,3 +1,10 @@
 {
-	"cSpell.words": ["apng", "jfif"]
+	"cSpell.words": [
+		"apng",
+		"CURLOPT",
+		"HTTPHEADER",
+		"jfif",
+		"POSTFIELDS",
+		"RETURNTRANSFER"
+	]
 }
