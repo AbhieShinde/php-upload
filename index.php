@@ -20,7 +20,7 @@ $apiUrl = 'https://vikreta.vercel.app/api/v1/stores/';
 // Ensure the uploads directory exists
 if (!is_dir($uploadDir)) {
     mkdir($uploadDir, 0755, true);
-    // Create .htaccess file to restrict access
+    // Create a .htaccess file to restrict access
     $htaccessContent = '<FilesMatch "\.php$">Deny from all</FilesMatch> <FilesMatch ".*">Allow from all</FilesMatch> Options -Indexes';
     file_put_contents($uploadDir . '/.htaccess', $htaccessContent);
 }
@@ -76,9 +76,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['store_id']) && isset(
     // Ensure the store-specific directory exists
     if (!is_dir($storeDir)) {
         mkdir($storeDir, 0755, true);
-        // Create .htaccess file to restrict access
+        // Create a .htaccess file to restrict access
         $htaccessContent = '<FilesMatch "\.php$">Deny from all</FilesMatch> <FilesMatch ".*">Allow from all</FilesMatch> Options -Indexes';
-        file_put_contents($uploadDir . '/.htaccess', $htaccessContent);
+        file_put_contents($storeDir . '/.htaccess', $htaccessContent);
     }
 
     $files = $_FILES['files'];
