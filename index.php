@@ -126,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['store_id']) && isset(
             exit;
         }
 
-        echo json_encode(['ok' => true, 'uploaded_documents' => $uploadSuccess]);
+        echo json_encode(['ok' => true, 'documents' => $uploadedDocs]);
     } else {
         http_response_code(400);
         echo json_encode(['ok' => false, 'message' => 'No files were uploaded or all failed.']);
