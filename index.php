@@ -93,11 +93,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['store_id']) && isset(
                 'url' => 'https://' . $_SERVER['HTTP_HOST'] . str_replace($_SERVER['DOCUMENT_ROOT'], '', $targetFile),
                 'size' => $files['size'][$key],
                 'name' => $fileName,
-                'uploader' => "php_script",
+                'service' => "php/script",
                 'mime_type' => $files['type'][$key],
 			    'created_by' => $createdBy,
 				'created_at' => date('Y-m-d H:i:s'),
-				'cdn_provider' => "hostinger_web_server",
+				'storage_provider' => "hostinger/webserver",
             ];
         }
     }
