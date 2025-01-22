@@ -4,17 +4,6 @@ $uploadDir = __DIR__ . '/stores';
 
 $maxFileSize = 20 * 1024 * 1024; // 20 MB
 
-$allowedMIME = [
-	"image/apng", // Animated PNG images .apng
-	"image/avif", // AV1 Image File .avif
-	"image/bmp", // Bitmap Image .bmp
-	"image/gif", // Graphics Interchange Format .gif
-	"image/jpeg", // .jpg, .jpeg, .jfif
-	"image/png", // Portable Network Graphics .png
-	"image/svg+xml", // Scalable Vector Graphics .svg
-	"image/webp", // Web Picture .webp
-];
-
 $apiUrl = 'https://vikreta.vercel.app/api/v1/stores/';
 
 // Ensure the uploads directory exists
@@ -46,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['store_id']) && isset(
 
     // Ensure only allowed MIME types are uploaded
     foreach ($_FILES['files']['type'] as $type) {
-        if (!in_array($type, $allowedMIME)) {
+        if (!str_starts_with($type, 'image/') && !str_starts_with($type, 'video/') && !str_starts_with($type, 'application/pdf')) {
             http_response_code(400);
             echo json_encode(['ok' => false, 'message' => 'Invalid file type.']);
             exit;
