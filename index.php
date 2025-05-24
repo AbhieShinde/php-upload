@@ -6,12 +6,14 @@ $maxFileSize = 20 * 1024 * 1024; // 20 MB
 
 $apiUrl = 'https://vikreta.vercel.app/api/v1/stores/';
 
+// Define htaccess content as a constant
+define('HTACCESS_CONTENT', '<FilesMatch "\.php$">\n    Require all denied\n</FilesMatch>\n<FilesMatch ".*">\n    Require all granted\n</FilesMatch>\nOptions -Indexes');
+
 // Ensure the uploads directory exists
 if (!is_dir($uploadDir)) {
     mkdir($uploadDir, 0755, true);
     // Create a .htaccess file to restrict access
-    $htaccessContent = '<FilesMatch "\.php$">Deny from all</FilesMatch> <FilesMatch ".*">Allow from all</FilesMatch> Options -Indexes';
-    file_put_contents($uploadDir . '/.htaccess', $htaccessContent);
+    file_put_contents($uploadDir . '/.htaccess', HTACCESS_CONTENT);
 }
 
 // Check if store_id and files are provided
@@ -66,8 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['store_id']) && isset(
     if (!is_dir($storeDir)) {
         mkdir($storeDir, 0755, true);
         // Create a .htaccess file to restrict access
-        $htaccessContent = '<FilesMatch "\.php$">Deny from all</FilesMatch> <FilesMatch ".*">Allow from all</FilesMatch> Options -Indexes';
-        file_put_contents($storeDir . '/.htaccess', $htaccessContent);
+        file_put_contents($storeDir . '/.htaccess', HTACCESS_CONTENT);
     }
 
     $files = $_FILES['files'];
