@@ -7,7 +7,7 @@ $maxFileSize = 20 * 1024 * 1024; // 20 MB
 $apiUrl = 'https://vikreta.vercel.app/api/v1/stores/';
 
 // Define htaccess content as a constant
-define('HTACCESS_CONTENT', '<FilesMatch "\.php$">\n    Require all denied\n</FilesMatch>\n<FilesMatch ".*">\n    Require all granted\n</FilesMatch>\nOptions -Indexes');
+define('HTACCESS_CONTENT', "<FilesMatch \"\\.php$\">\n    Require all denied\n</FilesMatch>\n<FilesMatch \".*\">\n    Require all granted\n</FilesMatch>\nOptions -Indexes");
 
 // Ensure the uploads directory exists
 if (!is_dir($uploadDir)) {
